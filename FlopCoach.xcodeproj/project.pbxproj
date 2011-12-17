@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB82C10A149D33D800A611DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB82C109149D33D800A611DD /* Cocoa.framework */; };
+		CB82C114149D33D800A611DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB82C112149D33D800A611DD /* InfoPlist.strings */; };
+		CB82C116149D33D800A611DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB82C115149D33D800A611DD /* main.m */; };
+		CB82C11A149D33D800A611DD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CB82C118149D33D800A611DD /* Credits.rtf */; };
+		CB82C11D149D33D800A611DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB82C11C149D33D800A611DD /* AppDelegate.m */; };
+		CB82C120149D33D800A611DD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB82C11E149D33D800A611DD /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CB82C105149D33D800A611DD /* FlopCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlopCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB82C109149D33D800A611DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CB82C10C149D33D800A611DD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CB82C10D149D33D800A611DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CB82C10E149D33D800A611DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CB82C111149D33D800A611DD /* FlopCoach-Info.plist */ = {isa = PBXFileReference; path = "FlopCoach-Info.plist"; sourceTree = "<group>"; };
+		CB82C113149D33D800A611DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CB82C115149D33D800A611DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB82C117149D33D800A611DD /* FlopCoach-Prefix.pch */ = {isa = PBXFileReference; path = "FlopCoach-Prefix.pch"; sourceTree = "<group>"; };
+		CB82C119149D33D800A611DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CB82C11B149D33D800A611DD /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB82C11C149D33D800A611DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CB82C11F149D33D800A611DD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB82C102149D33D800A611DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB82C10A149D33D800A611DD /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB82C0FA149D33D800A611DD = {
+			isa = PBXGroup;
+			children = (
+				CB82C10F149D33D800A611DD /* FlopCoach */,
+				CB82C108149D33D800A611DD /* Frameworks */,
+				CB82C106149D33D800A611DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB82C106149D33D800A611DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB82C105149D33D800A611DD /* FlopCoach.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB82C108149D33D800A611DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB82C109149D33D800A611DD /* Cocoa.framework */,
+				CB82C10B149D33D800A611DD /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB82C10B149D33D800A611DD /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB82C10C149D33D800A611DD /* AppKit.framework */,
+				CB82C10D149D33D800A611DD /* CoreData.framework */,
+				CB82C10E149D33D800A611DD /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CB82C10F149D33D800A611DD /* FlopCoach */ = {
+			isa = PBXGroup;
+			children = (
+				CB82C11B149D33D800A611DD /* AppDelegate.h */,
+				CB82C11C149D33D800A611DD /* AppDelegate.m */,
+				CB82C11E149D33D800A611DD /* MainMenu.xib */,
+				CB82C110149D33D800A611DD /* Supporting Files */,
+			);
+			path = FlopCoach;
+			sourceTree = "<group>";
+		};
+		CB82C110149D33D800A611DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB82C111149D33D800A611DD /* FlopCoach-Info.plist */,
+				CB82C112149D33D800A611DD /* InfoPlist.strings */,
+				CB82C115149D33D800A611DD /* main.m */,
+				CB82C117149D33D800A611DD /* FlopCoach-Prefix.pch */,
+				CB82C118149D33D800A611DD /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB82C104149D33D800A611DD /* FlopCoach */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "FlopCoach" */;
+			buildPhases = (
+				CB82C101149D33D800A611DD /* Sources */,
+				CB82C102149D33D800A611DD /* Frameworks */,
+				CB82C103149D33D800A611DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlopCoach;
+			productName = FlopCoach;
+			productReference = CB82C105149D33D800A611DD /* FlopCoach.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB82C0FC149D33D800A611DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "itelect AB";
+			};
+			buildConfigurationList = CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "FlopCoach" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CB82C0FA149D33D800A611DD;
+			productRefGroup = CB82C106149D33D800A611DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB82C104149D33D800A611DD /* FlopCoach */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB82C103149D33D800A611DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB82C114149D33D800A611DD /* InfoPlist.strings in Resources */,
+				CB82C11A149D33D800A611DD /* Credits.rtf in Resources */,
+				CB82C120149D33D800A611DD /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB82C101149D33D800A611DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB82C116149D33D800A611DD /* main.m in Sources */,
+				CB82C11D149D33D800A611DD /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CB82C112149D33D800A611DD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB82C113149D33D800A611DD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CB82C118149D33D800A611DD /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB82C119149D33D800A611DD /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		CB82C11E149D33D800A611DD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB82C11F149D33D800A611DD /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB82C121149D33D800A611DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CB82C122149D33D800A611DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CB82C124149D33D800A611DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlopCoach/FlopCoach-Prefix.pch";
+				INFOPLIST_FILE = "FlopCoach/FlopCoach-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CB82C125149D33D800A611DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlopCoach/FlopCoach-Prefix.pch";
+				INFOPLIST_FILE = "FlopCoach/FlopCoach-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "FlopCoach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB82C121149D33D800A611DD /* Debug */,
+				CB82C122149D33D800A611DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "FlopCoach" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB82C124149D33D800A611DD /* Debug */,
+				CB82C125149D33D800A611DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB82C0FC149D33D800A611DD /* Project object */;
+}

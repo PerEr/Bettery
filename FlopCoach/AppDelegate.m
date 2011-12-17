@@ -12,14 +12,12 @@
 
 @synthesize window = _window;
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
 }
 	
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [_window setLevel: NSStatusWindowLevel];
 }
 
 @end

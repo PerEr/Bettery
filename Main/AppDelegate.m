@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ProcessMaster.h"
 
 @implementation AppDelegate
 
@@ -17,7 +18,8 @@
 }
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [_window setLevel: NSStatusWindowLevel];
+    ProcessMaster* pm = [[[ProcessMaster alloc] init] autorelease];
+    [pm test];
 }
 
 @end

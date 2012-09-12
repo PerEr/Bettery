@@ -110,7 +110,6 @@
 				CB82C127149D365A00A611DD /* ViewController.m */,
 				CB82C128149D365A00A611DD /* ViewController.xib */,
 			);
-			name = Main;
 			path = Main;
 			sourceTree = "<group>";
 		};
@@ -196,6 +195,7 @@
 				CB82C11D149D33D800A611DD /* AppDelegate.m in Sources */,
 				CB82C129149D365A00A611DD /* ViewController.m in Sources */,
 				CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */,
+				CB5A04CF1601217C0067CCFF /* ProcessMaster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,17 +10,38 @@
 
 @implementation ProcessMaster
 
-- (void) test {
-    //NSLog(@"%@", [[NSWorkspace sharedWorkspace] launchedApplications]);
+@synthesize table;
 
-    NSArray* procs = [[NSWorkspace sharedWorkspace] launchedApplications];
-    for (NSDictionary* procInfo in procs) {
-        
-        NSString* name = [procInfo objectForKey: @"NSApplicationName"];
-        NSInteger* pid = [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
-        
-        NSLog(@"%@ %@", name, pid);
+- (id) init {
+    
+    if ((self = [super init])) {
+        apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
     }
+    
+    return self;
+}
+
+-(void) awakeFromNib {
+    [table reloadData];
+}
+
+- (void) dealloc {
+    [apps release];
+    [super dealloc];
+}
+
+- (int) numberOfRowsInTableView:( NSTableView*) tableView {
+    return (int) [apps count] ;
+}
+
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn row:(int)row {
+    
+    NSDictionary* procInfo = [apps objectAtIndex: row];
+
+    NSString* name = [procInfo objectForKey: @"NSApplicationName"];
+    //NSInteger* pid = (NSInteger*) [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
+
+    return name;
 }
 
 @end

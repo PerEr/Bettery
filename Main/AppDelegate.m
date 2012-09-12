@@ -18,8 +18,6 @@
 }
 	
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    ProcessMaster* pm = [[[ProcessMaster alloc] init] autorelease];
-    [pm test];
 }
 
 @end

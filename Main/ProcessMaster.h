@@ -10,8 +10,12 @@
 
 @interface ProcessMaster : NSObject {
     
+    IBOutlet NSTableView* table;
+    
+@private
+    NSArray* apps;
 }
 
-- (void) test;
+@property (assign) NSTableView * table;
 
 @end

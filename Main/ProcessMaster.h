@@ -10,12 +10,14 @@
 
 @interface ProcessMaster : NSObject {
     
-    IBOutlet NSTableView* table;
+    IBOutlet NSTableView* tableRunning;
+    IBOutlet NSTableView* tableManaged;
     
 @private
     NSArray* apps;
 }
 
-@property (assign) NSTableView * table;
+@property (assign) NSTableView * tableRunning;
+@property (assign) NSTableView * tableManaged;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation ProcessMaster
 
-@synthesize table;
+@synthesize tableRunning, tableManaged;
 
 - (id) init {
     
@@ -22,7 +22,8 @@
 }
 
 -(void) awakeFromNib {
-    [table reloadData];
+    [tableRunning reloadData];
+    [tableManaged reloadData];
 }
 
 - (void) dealloc {
@@ -31,17 +32,20 @@
 }
 
 - (int) numberOfRowsInTableView:( NSTableView*) tableView {
-    return (int) [apps count] ;
+    return (int) ((tableView == tableRunning) ? [apps count] : 0);
 }
 
 - (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn row:(int)row {
     
-    NSDictionary* procInfo = [apps objectAtIndex: row];
+    if (tableView == tableRunning) {
+        NSDictionary* procInfo = [apps objectAtIndex: row];
 
-    NSString* name = [procInfo objectForKey: @"NSApplicationName"];
-    //NSInteger* pid = (NSInteger*) [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
+        NSString* name = [procInfo objectForKey: @"NSApplicationName"];
+        //NSInteger* pid = (NSInteger*) [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
 
-    return name;
+        return name;
+    }
+    return @"";
 }
 
 @end

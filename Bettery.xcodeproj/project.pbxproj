@@ -7,18 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB7AC21B149E96F400540DA5 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CB7AC21A149E96F400540DA5 /* splash.png */; };
-		CB7E1790149D4A620098D568 /* OddsLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E178F149D4A620098D568 /* OddsLookup.m */; };
-		CB7E17C3149D5AE10098D568 /* 2.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BA149D5AE10098D568 /* 2.plist */; };
-		CB7E17C4149D5AE10098D568 /* 3.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BB149D5AE10098D568 /* 3.plist */; };
-		CB7E17C5149D5AE10098D568 /* 4.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BC149D5AE10098D568 /* 4.plist */; };
-		CB7E17C6149D5AE10098D568 /* 5.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BD149D5AE10098D568 /* 5.plist */; };
-		CB7E17C7149D5AE10098D568 /* 6.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BE149D5AE10098D568 /* 6.plist */; };
-		CB7E17C8149D5AE10098D568 /* 7.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17BF149D5AE10098D568 /* 7.plist */; };
-		CB7E17C9149D5AE10098D568 /* 8.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17C0149D5AE10098D568 /* 8.plist */; };
-		CB7E17CA149D5AE10098D568 /* 9.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17C1149D5AE10098D568 /* 9.plist */; };
-		CB7E17CB149D5AE10098D568 /* 10.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB7E17C2149D5AE10098D568 /* 10.plist */; };
-		CB7E17CE149E2AB50098D568 /* TextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E17CD149E2AB50098D568 /* TextFieldDelegate.m */; };
+		CB5A04CF1601217C0067CCFF /* ProcessMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A04CE1601217C0067CCFF /* ProcessMaster.m */; };
 		CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */; };
 		CB82C10A149D33D800A611DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB82C109149D33D800A611DD /* Cocoa.framework */; };
 		CB82C114149D33D800A611DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB82C112149D33D800A611DD /* InfoPlist.strings */; };
@@ -32,32 +21,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CB7AC21A149E96F400540DA5 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
-		CB7E178E149D4A620098D568 /* OddsLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OddsLookup.h; sourceTree = "<group>"; };
-		CB7E178F149D4A620098D568 /* OddsLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OddsLookup.m; sourceTree = "<group>"; };
-		CB7E17BA149D5AE10098D568 /* 2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 2.plist; path = data/2.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17BB149D5AE10098D568 /* 3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 3.plist; path = data/3.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17BC149D5AE10098D568 /* 4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 4.plist; path = data/4.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17BD149D5AE10098D568 /* 5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 5.plist; path = data/5.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17BE149D5AE10098D568 /* 6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 6.plist; path = data/6.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17BF149D5AE10098D568 /* 7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 7.plist; path = data/7.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17C0149D5AE10098D568 /* 8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 8.plist; path = data/8.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17C1149D5AE10098D568 /* 9.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 9.plist; path = data/9.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17C2149D5AE10098D568 /* 10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 10.plist; path = data/10.plist; sourceTree = SOURCE_ROOT; };
-		CB7E17CC149E2AB50098D568 /* TextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldDelegate.h; sourceTree = "<group>"; };
-		CB7E17CD149E2AB50098D568 /* TextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldDelegate.m; sourceTree = "<group>"; };
+		CB5A04CD1601217C0067CCFF /* ProcessMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessMaster.h; sourceTree = "<group>"; };
+		CB5A04CE1601217C0067CCFF /* ProcessMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessMaster.m; sourceTree = "<group>"; };
 		CB7E17CF149E2D740098D568 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		CB7E17D0149E2D9A0098D568 /* SelectorCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorCommand.h; sourceTree = "<group>"; };
 		CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorCommand.m; sourceTree = "<group>"; };
-		CB82C105149D33D800A611DD /* FlopCoach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlopCoach.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB82C105149D33D800A611DD /* Bettery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bettery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB82C109149D33D800A611DD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CB82C10C149D33D800A611DD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		CB82C10D149D33D800A611DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CB82C10E149D33D800A611DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CB82C111149D33D800A611DD /* FlopCoach-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlopCoach-Info.plist"; sourceTree = "<group>"; };
+		CB82C111149D33D800A611DD /* Bettery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bettery-Info.plist"; sourceTree = "<group>"; };
 		CB82C113149D33D800A611DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CB82C115149D33D800A611DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CB82C117149D33D800A611DD /* FlopCoach-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlopCoach-Prefix.pch"; sourceTree = "<group>"; };
+		CB82C117149D33D800A611DD /* Bettery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bettery-Prefix.pch"; sourceTree = "<group>"; };
 		CB82C119149D33D800A611DD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		CB82C11B149D33D800A611DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB82C11C149D33D800A611DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,27 +57,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CB7E1792149D59A70098D568 /* Odds */ = {
-			isa = PBXGroup;
-			children = (
-				CB7E17BA149D5AE10098D568 /* 2.plist */,
-				CB7E17BB149D5AE10098D568 /* 3.plist */,
-				CB7E17BC149D5AE10098D568 /* 4.plist */,
-				CB7E17BD149D5AE10098D568 /* 5.plist */,
-				CB7E17BE149D5AE10098D568 /* 6.plist */,
-				CB7E17BF149D5AE10098D568 /* 7.plist */,
-				CB7E17C0149D5AE10098D568 /* 8.plist */,
-				CB7E17C1149D5AE10098D568 /* 9.plist */,
-				CB7E17C2149D5AE10098D568 /* 10.plist */,
-			);
-			name = Odds;
-			sourceTree = "<group>";
-		};
 		CB82C0FA149D33D800A611DD = {
 			isa = PBXGroup;
 			children = (
 				CBEEC21F14A06D6B009DF72D /* icon.icns */,
-				CB82C10F149D33D800A611DD /* FlopCoach */,
+				CB82C10F149D33D800A611DD /* Main */,
 				CB82C108149D33D800A611DD /* Frameworks */,
 				CB82C106149D33D800A611DD /* Products */,
 			);
@@ -109,7 +70,7 @@
 		CB82C106149D33D800A611DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CB82C105149D33D800A611DD /* FlopCoach.app */,
+				CB82C105149D33D800A611DD /* Bettery.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,14 +94,14 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		CB82C10F149D33D800A611DD /* FlopCoach */ = {
+		CB82C10F149D33D800A611DD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				CB7AC21A149E96F400540DA5 /* splash.png */,
+				CB5A04CD1601217C0067CCFF /* ProcessMaster.h */,
+				CB5A04CE1601217C0067CCFF /* ProcessMaster.m */,
 				CB7E17D0149E2D9A0098D568 /* SelectorCommand.h */,
 				CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */,
 				CB7E17CF149E2D740098D568 /* Command.h */,
-				CB7E1792149D59A70098D568 /* Odds */,
 				CB82C11B149D33D800A611DD /* AppDelegate.h */,
 				CB82C11C149D33D800A611DD /* AppDelegate.m */,
 				CB82C11E149D33D800A611DD /* MainMenu.xib */,
@@ -148,21 +109,18 @@
 				CB82C126149D365A00A611DD /* ViewController.h */,
 				CB82C127149D365A00A611DD /* ViewController.m */,
 				CB82C128149D365A00A611DD /* ViewController.xib */,
-				CB7E178E149D4A620098D568 /* OddsLookup.h */,
-				CB7E178F149D4A620098D568 /* OddsLookup.m */,
-				CB7E17CC149E2AB50098D568 /* TextFieldDelegate.h */,
-				CB7E17CD149E2AB50098D568 /* TextFieldDelegate.m */,
 			);
-			path = FlopCoach;
+			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		CB82C110149D33D800A611DD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CB82C111149D33D800A611DD /* FlopCoach-Info.plist */,
+				CB82C111149D33D800A611DD /* Bettery-Info.plist */,
 				CB82C112149D33D800A611DD /* InfoPlist.strings */,
 				CB82C115149D33D800A611DD /* main.m */,
-				CB82C117149D33D800A611DD /* FlopCoach-Prefix.pch */,
+				CB82C117149D33D800A611DD /* Bettery-Prefix.pch */,
 				CB82C118149D33D800A611DD /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -171,9 +129,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB82C104149D33D800A611DD /* FlopCoach */ = {
+		CB82C104149D33D800A611DD /* Bettery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "FlopCoach" */;
+			buildConfigurationList = CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "Bettery" */;
 			buildPhases = (
 				CB82C101149D33D800A611DD /* Sources */,
 				CB82C102149D33D800A611DD /* Frameworks */,
@@ -183,9 +141,9 @@
 			);
 			dependencies = (
 			);
-			name = FlopCoach;
-			productName = FlopCoach;
-			productReference = CB82C105149D33D800A611DD /* FlopCoach.app */;
+			name = Bettery;
+			productName = Main;
+			productReference = CB82C105149D33D800A611DD /* Bettery.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -197,7 +155,7 @@
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "itelect AB";
 			};
-			buildConfigurationList = CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "FlopCoach" */;
+			buildConfigurationList = CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "Bettery" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -209,7 +167,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB82C104149D33D800A611DD /* FlopCoach */,
+				CB82C104149D33D800A611DD /* Bettery */,
 			);
 		};
 /* End PBXProject section */
@@ -223,16 +181,6 @@
 				CB82C11A149D33D800A611DD /* Credits.rtf in Resources */,
 				CB82C120149D33D800A611DD /* MainMenu.xib in Resources */,
 				CB82C12A149D365A00A611DD /* ViewController.xib in Resources */,
-				CB7E17C3149D5AE10098D568 /* 2.plist in Resources */,
-				CB7E17C4149D5AE10098D568 /* 3.plist in Resources */,
-				CB7E17C5149D5AE10098D568 /* 4.plist in Resources */,
-				CB7E17C6149D5AE10098D568 /* 5.plist in Resources */,
-				CB7E17C7149D5AE10098D568 /* 6.plist in Resources */,
-				CB7E17C8149D5AE10098D568 /* 7.plist in Resources */,
-				CB7E17C9149D5AE10098D568 /* 8.plist in Resources */,
-				CB7E17CA149D5AE10098D568 /* 9.plist in Resources */,
-				CB7E17CB149D5AE10098D568 /* 10.plist in Resources */,
-				CB7AC21B149E96F400540DA5 /* splash.png in Resources */,
 				CBEEC22014A06D6B009DF72D /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,8 +195,6 @@
 				CB82C116149D33D800A611DD /* main.m in Sources */,
 				CB82C11D149D33D800A611DD /* AppDelegate.m in Sources */,
 				CB82C129149D365A00A611DD /* ViewController.m in Sources */,
-				CB7E1790149D4A620098D568 /* OddsLookup.m in Sources */,
-				CB7E17CE149E2AB50098D568 /* TextFieldDelegate.m in Sources */,
 				CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,10 +280,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlopCoach/FlopCoach-Prefix.pch";
-				INFOPLIST_FILE = "FlopCoach/FlopCoach-Info.plist";
+				GCC_PREFIX_HEADER = "Main/Bettery-Prefix.pch";
+				INFOPLIST_FILE = "Main/Bettery-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bettery;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -348,10 +294,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FlopCoach/FlopCoach-Prefix.pch";
-				INFOPLIST_FILE = "FlopCoach/FlopCoach-Info.plist";
+				GCC_PREFIX_HEADER = "Main/Bettery-Prefix.pch";
+				INFOPLIST_FILE = "Main/Bettery-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bettery;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -359,7 +305,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "FlopCoach" */ = {
+		CB82C0FF149D33D800A611DD /* Build configuration list for PBXProject "Bettery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB82C121149D33D800A611DD /* Debug */,
@@ -368,7 +314,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "FlopCoach" */ = {
+		CB82C123149D33D800A611DD /* Build configuration list for PBXNativeTarget "Bettery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CB82C124149D33D800A611DD /* Debug */,

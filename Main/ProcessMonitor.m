@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 itelect AB. All rights reserved.
 //
 
-#import "ProcessMaster.h"
+#import "ProcessMonitor.h"
 
-@implementation ProcessMaster
+@implementation ProcessMonitor
 
 @synthesize tableRunning, tableManaged;
 

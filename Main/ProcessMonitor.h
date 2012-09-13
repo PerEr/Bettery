@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ProcessMaster : NSObject {
+@interface ProcessMonitor : NSObject {
     
     IBOutlet NSTableView* tableRunning;
     IBOutlet NSTableView* tableManaged;

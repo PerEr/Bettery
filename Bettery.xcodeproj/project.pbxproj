@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB5A04CF1601217C0067CCFF /* ProcessMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A04CE1601217C0067CCFF /* ProcessMaster.m */; };
+		CB5A04CF1601217C0067CCFF /* ProcessMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */; };
 		CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */; };
 		CB82C10A149D33D800A611DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB82C109149D33D800A611DD /* Cocoa.framework */; };
 		CB82C114149D33D800A611DD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB82C112149D33D800A611DD /* InfoPlist.strings */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CB5A04CD1601217C0067CCFF /* ProcessMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessMaster.h; sourceTree = "<group>"; };
-		CB5A04CE1601217C0067CCFF /* ProcessMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessMaster.m; sourceTree = "<group>"; };
+		CB5A04CD1601217C0067CCFF /* ProcessMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessMonitor.h; sourceTree = "<group>"; };
+		CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessMonitor.m; sourceTree = "<group>"; };
 		CB7E17CF149E2D740098D568 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		CB7E17D0149E2D9A0098D568 /* SelectorCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectorCommand.h; sourceTree = "<group>"; };
 		CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectorCommand.m; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 		CB82C10F149D33D800A611DD /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				CB5A04CD1601217C0067CCFF /* ProcessMaster.h */,
-				CB5A04CE1601217C0067CCFF /* ProcessMaster.m */,
+				CB5A04CD1601217C0067CCFF /* ProcessMonitor.h */,
+				CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */,
 				CB7E17D0149E2D9A0098D568 /* SelectorCommand.h */,
 				CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */,
 				CB7E17CF149E2D740098D568 /* Command.h */,
@@ -195,7 +195,7 @@
 				CB82C11D149D33D800A611DD /* AppDelegate.m in Sources */,
 				CB82C129149D365A00A611DD /* ViewController.m in Sources */,
 				CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */,
-				CB5A04CF1601217C0067CCFF /* ProcessMaster.m in Sources */,
+				CB5A04CF1601217C0067CCFF /* ProcessMonitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

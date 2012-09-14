@@ -22,11 +22,21 @@
 }
 
 -(void) awakeFromNib {
-    [tableRunning reloadData];
-    [tableManaged reloadData];
+
+    NSNotificationCenter* ns = [[NSWorkspace sharedWorkspace] notificationCenter];
+    [ns addObserver:self
+           selector:@selector(onProcessActivated:)
+               name:NSWorkspaceDidActivateApplicationNotification object:nil];
+    
+    [ns addObserver:self
+           selector:@selector(onProcessDeActivated:)
+               name:NSWorkspaceDidDeactivateApplicationNotification object:nil];
 }
 
 - (void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     [apps release];
     [super dealloc];
 }
@@ -47,5 +57,27 @@
     }
     return @"";
 }
+
+
+- (void) onProcessActivated: (NSNotification *) note {
+
+    NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString* name = [app localizedName];
+    NSLog(@"pop %@\n", name);
+}
+
+
+- (void) onProcessDeActivated: (NSNotification *) note {
+    NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString* name = [app localizedName];
+
+    NSLog(@"hide %@\n", name);
+    
+    if ([name compare:@"Bettery"] != 0) {
+        NSLog(@"%App hidden");
+        [app hide];
+    }
+}
+
 
 @end

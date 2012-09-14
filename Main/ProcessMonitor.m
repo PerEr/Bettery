@@ -59,11 +59,41 @@
 }
 
 
+- (bool) isSuspendable: (NSString*) name {
+    return [name compare:@"Spotify"] == 0;
+}
+
+- (void) killPid: (pid_t) pid withType: (NSString*) type {
+    NSTask *task;
+    task = [[NSTask alloc] init];
+    [task setLaunchPath: @"/bin/kill"];
+    
+    NSArray *arguments;
+    arguments = [NSArray arrayWithObjects: type, [NSString stringWithFormat:@"%d", pid], nil];
+    [task setArguments: arguments];
+    
+    [task launch];
+}
+
+- (void) suspend: (pid_t) pid {
+    [self killPid: pid withType: @"-STOP"];
+}
+
+- (void) resume: (pid_t) pid {
+    [self killPid: pid withType: @"-CONT"];
+}
+
 - (void) onProcessActivated: (NSNotification *) note {
 
     NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
     NSString* name = [app localizedName];
     NSLog(@"pop %@\n", name);
+
+    if ([self isSuspendable: name]) {
+        pid_t pid = [app processIdentifier];
+        NSLog(@"Will resume app %@ (%d)", name, pid);
+        [self resume: pid];
+    }
 }
 
 
@@ -72,10 +102,11 @@
     NSString* name = [app localizedName];
 
     NSLog(@"hide %@\n", name);
-    
-    if ([name compare:@"Bettery"] != 0) {
-        NSLog(@"%App hidden");
-        [app hide];
+
+    if ([self isSuspendable: name]) {
+        pid_t pid = [app processIdentifier];
+        NSLog(@"Will suspend app %@ (%d)", name, pid);
+        [self suspend: pid];
     }
 }
 

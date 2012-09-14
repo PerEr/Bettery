@@ -15,8 +15,6 @@
 - (id) init {
     
     if ((self = [super init])) {
-        apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
-
         suspendables = [[NSMutableDictionary alloc] init];
         suspended = [[NSMutableArray alloc] init];
 
@@ -29,6 +27,8 @@
 
 -(void) awakeFromNib {
 
+    [self onProcessListChanged: nil];
+
     NSNotificationCenter* ns = [[NSWorkspace sharedWorkspace] notificationCenter];
     [ns addObserver:self
            selector:@selector(onProcessActivated:)
@@ -37,6 +37,13 @@
     [ns addObserver:self
            selector:@selector(onProcessDeActivated:)
                name:NSWorkspaceDidDeactivateApplicationNotification object:nil];
+
+    [ns addObserver:self
+           selector:@selector(onProcessListChanged:)
+               name:NSWorkspaceDidLaunchApplicationNotification object:nil];
+    [ns addObserver:self
+           selector:@selector(onProcessListChanged:)
+               name:NSWorkspaceDidTerminateApplicationNotification object:nil];
 }
 
 - (void) dealloc {
@@ -126,6 +133,13 @@
         NSLog(@"Suspended %d", [suspended count]);
     }
 }
+
+- (void) onProcessListChanged: (id) obj {
+    [apps release];
+    apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
+    [tableRunning reloadData];
+}
+
 
 
 @end

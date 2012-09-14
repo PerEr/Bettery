@@ -16,6 +16,12 @@
     
     if ((self = [super init])) {
         apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
+
+        suspendables = [[NSMutableDictionary alloc] init];
+        suspended = [[NSMutableArray alloc] init];
+
+        [suspendables setObject: [NSArray arrayWithObjects: @"PluginProcess", @"WebProcess", nil] forKey: @"Safari"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"Spotify"];
     }
     
     return self;
@@ -36,6 +42,13 @@
 - (void) dealloc {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    for (NSString *s in suspended) {
+    }
+
+
+    [suspendables release];
+    [suspended release];
 
     [apps release];
     [super dealloc];
@@ -60,7 +73,7 @@
 
 
 - (bool) isSuspendable: (NSString*) name {
-    return [name compare:@"Spotify"] == 0;
+    return [suspendables objectForKey: name];
 }
 
 - (void) killPid: (pid_t) pid withType: (NSString*) type {
@@ -93,6 +106,8 @@
         pid_t pid = [app processIdentifier];
         NSLog(@"Will resume app %@ (%d)", name, pid);
         [self resume: pid];
+        [suspended removeObject: name];
+        NSLog(@"Suspended %d", [suspended count]);
     }
 }
 
@@ -107,6 +122,8 @@
         pid_t pid = [app processIdentifier];
         NSLog(@"Will suspend app %@ (%d)", name, pid);
         [self suspend: pid];
+        [suspended addObject: name];
+        NSLog(@"Suspended %d", [suspended count]);
     }
 }
 

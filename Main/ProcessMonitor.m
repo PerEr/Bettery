@@ -7,6 +7,7 @@
 //
 
 #import "ProcessMonitor.h"
+#import "ProcList.h"
 
 @implementation ProcessMonitor
 
@@ -127,6 +128,9 @@
 
     if ([self isSuspendable: name]) {
         pid_t pid = [app processIdentifier];
+        for (NSString* friend in [suspendables objectForKey: name]) {
+
+        }
         NSLog(@"Will suspend app %@ (%d)", name, pid);
         [self suspend: pid];
         [suspended addObject: name];
@@ -137,8 +141,12 @@
 - (void) onProcessListChanged: (id) obj {
     [apps release];
     apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
-    [tableRunning reloadData];
+    NSArray * procs = [ProcList runningProcesses];
+    for (NSDictionary *pp in procs) {
+
+    }
 }
+
 
 
 

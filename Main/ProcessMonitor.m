@@ -9,6 +9,7 @@
 #import "ProcessMonitor.h"
 #import "ProcList.h"
 
+
 @implementation ProcessMonitor
 
 @synthesize tableRunning, tableManaged;
@@ -17,10 +18,13 @@
     
     if ((self = [super init])) {
         suspendables = [[NSMutableDictionary alloc] init];
-        suspended = [[NSMutableArray alloc] init];
+        suspended = [[NSMutableDictionary alloc] init];
 
         [suspendables setObject: [NSArray arrayWithObjects: @"PluginProcess", @"WebProcess", nil] forKey: @"Safari"];
         [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"Spotify"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"TextWrangler"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"IntelliJ IDEA"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"AppCode"];
     }
     
     return self;
@@ -45,21 +49,44 @@
     [ns addObserver:self
            selector:@selector(onProcessListChanged:)
                name:NSWorkspaceDidTerminateApplicationNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+           selector:@selector(onApplicationQuit:)
+               name:NSApplicationWillTerminateNotification object:nil];
 }
 
-- (void) dealloc {
+- (void) killPid: (pid_t) pid withType: (NSString*) type {
+    NSTask *task;
+    task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath: @"/bin/kill"];
+    
+    NSArray *arguments;
+    arguments = [NSArray arrayWithObjects: type, [NSString stringWithFormat:@"%d", pid], nil];
+    [task setArguments: arguments];
+    
+    [task launch];
+}
+
+- (void) suspend: (pid_t) pid {
+    [self killPid: pid withType: @"-STOP"];
+}
+
+- (void) resume: (pid_t) pid {
+    [self killPid: pid withType: @"-CONT"];
+}
+
+
+- (void) onApplicationQuit: (NSNotification *) note {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    for (NSString *s in suspended) {
+    NSLog(@"Resuming suspended apps:");
+    for (NSString *s in [suspended allKeys]) {
+        NSNumber* pid = [suspended objectForKey: s];
+        NSLog(@"  %@ (%@)", s, pid);
+        [self resume: [pid unsignedIntValue]];
     }
 
-
-    [suspendables release];
-    [suspended release];
-
-    [apps release];
-    [super dealloc];
 }
 
 - (int) numberOfRowsInTableView:( NSTableView*) tableView {
@@ -84,26 +111,6 @@
     return [suspendables objectForKey: name];
 }
 
-- (void) killPid: (pid_t) pid withType: (NSString*) type {
-    NSTask *task;
-    task = [[NSTask alloc] init];
-    [task setLaunchPath: @"/bin/kill"];
-    
-    NSArray *arguments;
-    arguments = [NSArray arrayWithObjects: type, [NSString stringWithFormat:@"%d", pid], nil];
-    [task setArguments: arguments];
-    
-    [task launch];
-}
-
-- (void) suspend: (pid_t) pid {
-    [self killPid: pid withType: @"-STOP"];
-}
-
-- (void) resume: (pid_t) pid {
-    [self killPid: pid withType: @"-CONT"];
-}
-
 - (void) onProcessActivated: (NSNotification *) note {
 
     NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
@@ -114,8 +121,8 @@
         pid_t pid = [app processIdentifier];
         NSLog(@"Will resume app %@ (%d)", name, pid);
         [self resume: pid];
-        [suspended removeObject: name];
-        NSLog(@"Suspended %d", [suspended count]);
+        [suspended removeObjectForKey: name];
+        NSLog(@"Suspended apps = %lu", [suspended count]);
     }
 }
 
@@ -133,8 +140,8 @@
         }
         NSLog(@"Will suspend app %@ (%d)", name, pid);
         [self suspend: pid];
-        [suspended addObject: name];
-        NSLog(@"Suspended %d", [suspended count]);
+        [suspended setValue:  [NSNumber numberWithInt: pid] forKey: name];
+        NSLog(@"Suspended %lu", [suspended count]);
     }
 }
 

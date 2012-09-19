@@ -16,7 +16,7 @@
 @private
     NSArray* apps;
     NSMutableDictionary* suspendables; // main name -> {process name}+
-    NSMutableArray* suspended;         // Set of suspended apps
+    NSMutableDictionary* suspended;    // Set of suspended apps
     
 }
 

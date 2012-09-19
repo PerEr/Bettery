@@ -150,6 +150,13 @@
     apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
     NSArray * procs = [ProcList runningProcesses];
     for (NSDictionary *pp in procs) {
+        NSString* name = [pp objectForKey: @"pname"];
+        if ([self isSuspendable: name]) {
+            pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
+            NSLog(@"Will suspend app %@ (%u)", name, pid);
+            [self suspend: pid];
+            [suspended setObject:[NSNumber numberWithUnsignedInt: pid] forKey:name];
+        }
 
     }
 }

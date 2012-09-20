@@ -55,24 +55,12 @@
                name:NSApplicationWillTerminateNotification object:nil];
 }
 
-- (void) killPid: (pid_t) pid withType: (NSString*) type {
-    NSTask *task;
-    task = [[[NSTask alloc] init] autorelease];
-    [task setLaunchPath: @"/bin/kill"];
-    
-    NSArray *arguments;
-    arguments = [NSArray arrayWithObjects: type, [NSString stringWithFormat:@"%d", pid], nil];
-    [task setArguments: arguments];
-    
-    [task launch];
-}
-
 - (void) suspend: (pid_t) pid {
-    [self killPid: pid withType: @"-STOP"];
+    killpg(pid, SIGSTOP);
 }
 
 - (void) resume: (pid_t) pid {
-    [self killPid: pid withType: @"-CONT"];
+    killpg(pid, SIGCONT);
 }
 
 

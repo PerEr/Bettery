@@ -44,10 +44,10 @@
                name:NSWorkspaceDidDeactivateApplicationNotification object:nil];
 
     [ns addObserver:self
-           selector:@selector(onProcessListChanged:)
+           selector:@selector(onNewAppLaunched:)
                name:NSWorkspaceDidLaunchApplicationNotification object:nil];
     [ns addObserver:self
-           selector:@selector(onProcessListChanged:)
+           selector:@selector(onAppStopped:)
                name:NSWorkspaceDidTerminateApplicationNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -114,6 +114,19 @@
     }
 }
 
+- (void) onNewAppLaunched: (NSNotification *) note {
+    
+    [self onProcessListChanged: nil];
+    [self onProcessActivated: note];
+    
+}
+
+- (void) onAppStopped: (NSNotification *) note {
+    
+    [self onProcessListChanged: nil];
+    [self onProcessDeActivated: note];
+    
+}
 
 - (void) onProcessDeActivated: (NSNotification *) note {
     NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
@@ -147,6 +160,7 @@
         }
 
     }
+    [tableRunning reloadData];
 }
 
 

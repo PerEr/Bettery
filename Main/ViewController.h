@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ViewController : NSViewController {
-    
+ 
+    IBOutlet NSTableView* apps;
 }
 
+@property(retain) IBOutlet NSTableView* apps;
 
 @end

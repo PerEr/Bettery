@@ -53,6 +53,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
            selector:@selector(onApplicationQuit:)
                name:NSApplicationWillTerminateNotification object:nil];
+    
+    [tableRunning setTarget:self];
+    [tableRunning setDoubleAction:@selector(onSelectedRow:)];
 }
 
 - (void) suspend: (pid_t) pid {
@@ -163,6 +166,10 @@
     [tableRunning reloadData];
 }
 
+
+- (void) onSelectedRow: (id) obj {
+    NSLog(@"hej");
+}
 
 
 

@@ -15,6 +15,9 @@
     
 @private
     NSArray* apps;
+    NSMutableDictionary* suspendables; // main name -> {process name}+
+    NSMutableDictionary* suspended;    // Set of suspended apps
+    
 }
 
 @property (assign) NSTableView * tableRunning;

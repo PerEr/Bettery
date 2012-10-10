@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B11D4A4CD57CCAC212E9612 /* ProcList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B11D3D4BC243DD15ED8889C /* ProcList.m */; };
 		CB5A04CF1601217C0067CCFF /* ProcessMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */; };
 		CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7E17D1149E2D9A0098D568 /* SelectorCommand.m */; };
 		CB82C10A149D33D800A611DD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB82C109149D33D800A611DD /* Cocoa.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B11D3D01EF300C5A996DE4B /* ProcList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcList.h; sourceTree = "<group>"; };
+		1B11D3D4BC243DD15ED8889C /* ProcList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcList.m; sourceTree = "<group>"; };
 		CB5A04CD1601217C0067CCFF /* ProcessMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessMonitor.h; sourceTree = "<group>"; };
 		CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessMonitor.m; sourceTree = "<group>"; };
 		CB7E17CF149E2D740098D568 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 		CB82C10F149D33D800A611DD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1B11D3D01EF300C5A996DE4B /* ProcList.h */,
+				1B11D3D4BC243DD15ED8889C /* ProcList.m */,
 				CB5A04CD1601217C0067CCFF /* ProcessMonitor.h */,
 				CB5A04CE1601217C0067CCFF /* ProcessMonitor.m */,
 				CB7E17D0149E2D9A0098D568 /* SelectorCommand.h */,
@@ -196,6 +201,7 @@
 				CB82C129149D365A00A611DD /* ViewController.m in Sources */,
 				CB7E17D2149E2D9A0098D568 /* SelectorCommand.m in Sources */,
 				CB5A04CF1601217C0067CCFF /* ProcessMonitor.m in Sources */,
+				1B11D4A4CD57CCAC212E9612 /* ProcList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

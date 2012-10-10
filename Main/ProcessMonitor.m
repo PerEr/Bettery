@@ -7,6 +7,8 @@
 //
 
 #import "ProcessMonitor.h"
+#import "ProcList.h"
+
 
 @implementation ProcessMonitor
 
@@ -15,20 +17,67 @@
 - (id) init {
     
     if ((self = [super init])) {
-        apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
+        suspendables = [[NSMutableDictionary alloc] init];
+        suspended = [[NSMutableDictionary alloc] init];
+
+        [suspendables setObject: [NSArray arrayWithObjects: @"PluginProcess", @"WebProcess", nil] forKey: @"Safari"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"Spotify"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"TextWrangler"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"IntelliJ IDEA"];
+        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"AppCode"];
     }
     
     return self;
 }
 
 -(void) awakeFromNib {
-    [tableRunning reloadData];
-    [tableManaged reloadData];
+
+    [self onProcessListChanged: nil];
+
+    NSNotificationCenter* ns = [[NSWorkspace sharedWorkspace] notificationCenter];
+    [ns addObserver:self
+           selector:@selector(onProcessActivated:)
+               name:NSWorkspaceDidActivateApplicationNotification object:nil];
+    
+    [ns addObserver:self
+           selector:@selector(onProcessDeActivated:)
+               name:NSWorkspaceDidDeactivateApplicationNotification object:nil];
+
+    [ns addObserver:self
+           selector:@selector(onNewAppLaunched:)
+               name:NSWorkspaceDidLaunchApplicationNotification object:nil];
+    [ns addObserver:self
+           selector:@selector(onAppStopped:)
+               name:NSWorkspaceDidTerminateApplicationNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+           selector:@selector(onApplicationQuit:)
+               name:NSApplicationWillTerminateNotification object:nil];
+    
+    [tableRunning setTarget:self];
+    [tableRunning setDoubleAction:@selector(onSelectedRow:)];
 }
 
-- (void) dealloc {
-    [apps release];
-    [super dealloc];
+- (void) suspend: (pid_t) pid {
+    killpg(pid, SIGSTOP);
+}
+
+- (void) resume: (pid_t) pid {
+    killpg(pid, SIGCONT);
+}
+
+
+- (void) onApplicationQuit: (NSNotification *) note {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    NSLog(@"Resuming suspended apps:");
+    for (NSString *s in [suspended allKeys]) {
+        NSNumber* pid = [suspended objectForKey: s];
+        NSLog(@"  %@ (%@)", s, pid);
+        [self resume: [pid unsignedIntValue]];
+    }
+
 }
 
 - (int) numberOfRowsInTableView:( NSTableView*) tableView {
@@ -47,5 +96,81 @@
     }
     return @"";
 }
+
+
+- (bool) isSuspendable: (NSString*) name {
+    return [suspendables objectForKey: name];
+}
+
+- (void) onProcessActivated: (NSNotification *) note {
+
+    NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString* name = [app localizedName];
+    NSLog(@"pop %@\n", name);
+
+    if ([self isSuspendable: name]) {
+        pid_t pid = [app processIdentifier];
+        NSLog(@"Will resume app %@ (%d)", name, pid);
+        [self resume: pid];
+        [suspended removeObjectForKey: name];
+        NSLog(@"Suspended apps = %lu", [suspended count]);
+    }
+}
+
+- (void) onNewAppLaunched: (NSNotification *) note {
+    
+    [self onProcessListChanged: nil];
+    [self onProcessActivated: note];
+    
+}
+
+- (void) onAppStopped: (NSNotification *) note {
+    
+    [self onProcessListChanged: nil];
+    [self onProcessDeActivated: note];
+    
+}
+
+- (void) onProcessDeActivated: (NSNotification *) note {
+    NSRunningApplication* app = [[note userInfo] objectForKey:@"NSWorkspaceApplicationKey"];
+    NSString* name = [app localizedName];
+
+    NSLog(@"hide %@\n", name);
+
+    if ([self isSuspendable: name]) {
+        pid_t pid = [app processIdentifier];
+        for (NSString* friend in [suspendables objectForKey: name]) {
+
+        }
+        NSLog(@"Will suspend app %@ (%d)", name, pid);
+        [self suspend: pid];
+        [suspended setValue:  [NSNumber numberWithInt: pid] forKey: name];
+        NSLog(@"Suspended %lu", [suspended count]);
+    }
+}
+
+- (void) onProcessListChanged: (id) obj {
+    [apps release];
+    apps = [[[NSWorkspace sharedWorkspace] launchedApplications] copy];
+    NSArray * procs = [ProcList runningProcesses];
+    for (NSDictionary *pp in procs) {
+        NSString* name = [pp objectForKey: @"pname"];
+        if ([self isSuspendable: name]) {
+            pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
+            NSLog(@"Will suspend app %@ (%u)", name, pid);
+            [self suspend: pid];
+            [suspended setObject:[NSNumber numberWithUnsignedInt: pid] forKey:name];
+        }
+
+    }
+    [tableRunning reloadData];
+}
+
+
+- (void) onSelectedRow: (id) obj {
+    NSLog(@"hej");
+}
+
+
 
 @end

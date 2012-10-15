@@ -178,7 +178,7 @@
             NSLog(@"Will suspend app %@ (%u)", name, pid);
             [self suspend: pid];
             [suspended setObject:[NSNumber numberWithUnsignedInt: pid] forKey:name];
-        }
+        } 
 
     }
     [tableRunning reloadData];
@@ -196,6 +196,8 @@
     [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: name];
     
     [tableManaged reloadData];
+    
+    [self onProcessListChanged: nil];
 }
 
 - (void) onSelectedToReleaseRow: (NSTableView*) tableView {
@@ -210,6 +212,7 @@
         ++count;
     }
     [tableManaged reloadData];    
+    [self onProcessListChanged: nil];
 }
 
 

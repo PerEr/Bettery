@@ -19,12 +19,6 @@
     if ((self = [super init])) {
         suspendables = [[NSMutableDictionary alloc] init];
         suspended = [[NSMutableDictionary alloc] init];
-
-        [suspendables setObject: [NSArray arrayWithObjects: @"PluginProcess", @"WebProcess", nil] forKey: @"Safari"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"Spotify"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"TextWrangler"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"IntelliJ IDEA"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"AppCode"];
     }
     
     return self;
@@ -64,7 +58,10 @@
                name:NSApplicationWillTerminateNotification object:nil];
     
     [tableRunning setTarget:self];
-    [tableRunning setDoubleAction:@selector(onSelectedRow:)];
+    [tableRunning setDoubleAction:@selector(onSelectedToSuspendRow:)];
+
+    [tableManaged setTarget:self];
+    [tableManaged setDoubleAction:@selector(onSelectedToReleaseRow:)];
 }
 
 - (void) suspend: (pid_t) pid {
@@ -94,7 +91,7 @@
 }
 
 - (int) numberOfRowsInTableView:( NSTableView*) tableView {
-    return (int) ((tableView == tableRunning) ? [apps count] : 0);
+    return (int) ((tableView == tableRunning) ? [apps count] : [suspendables count]);
 }
 
 - (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn
@@ -107,8 +104,15 @@
         //NSInteger* pid = (NSInteger*) [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
 
         return name;
+    } else {
+        int count = 0;
+        for (NSString* key in [suspendables keyEnumerator]) {
+            if (count == row)
+                return key;
+            ++count;
+        }
+        return @"?";  // Should never happen
     }
-    return @"";
 }
 
 
@@ -127,7 +131,7 @@
         NSLog(@"Will resume app %@ (%d)", name, pid);
         [self resume: pid];
         [suspended removeObjectForKey: name];
-        NSLog(@"Suspended apps = %lu", [suspended count]);
+        NSLog(@"Suspended apps = %ld", [suspended count]);
     }
 }
 
@@ -169,11 +173,15 @@
     NSArray * procs = [ProcList runningProcesses];
     for (NSDictionary *pp in procs) {
         NSString* name = [pp objectForKey: @"pname"];
+        pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
         if ([self isSuspendable: name]) {
-            pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
             NSLog(@"Will suspend app %@ (%u)", name, pid);
             [self suspend: pid];
             [suspended setObject:[NSNumber numberWithUnsignedInt: pid] forKey:name];
+        } else if ([suspended objectForKey:name]) {
+            NSLog(@"Will resume app %@ (%u)", name, pid);
+            [self resume: pid];
+            [suspended removeObjectForKey: name];
         }
 
     }
@@ -181,8 +189,36 @@
 }
 
 
-- (void) onSelectedRow: (id) obj {
+- (void) onSelectedToSuspendRow: (NSTableView*) tableView {
+    NSInteger row = [tableView selectedRow];
+    
+    NSDictionary* procInfo = [apps objectAtIndex: row];
+        
+    NSString* name = [procInfo objectForKey: @"NSApplicationName"];
+    NSLog(@"Selected %@", name);
+    
+    [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: name];
+    
+    [tableManaged reloadData];
+    
+    [self onProcessListChanged: nil];
 }
+
+- (void) onSelectedToReleaseRow: (NSTableView*) tableView {
+    NSInteger row = [tableView selectedRow];
+    
+    int count = 0;
+    for (NSString* key in [suspendables keyEnumerator]) {
+        if (count == row) {
+            [suspendables removeObjectForKey: key];
+            break;
+        }
+        ++count;
+    }
+    [tableManaged reloadData];    
+    [self onProcessListChanged: nil];
+}
+
 
 
 

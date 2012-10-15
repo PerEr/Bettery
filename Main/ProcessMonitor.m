@@ -173,12 +173,16 @@
     NSArray * procs = [ProcList runningProcesses];
     for (NSDictionary *pp in procs) {
         NSString* name = [pp objectForKey: @"pname"];
+        pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
         if ([self isSuspendable: name]) {
-            pid_t pid = (pid_t) [[pp objectForKey:@"pid"] intValue];
             NSLog(@"Will suspend app %@ (%u)", name, pid);
             [self suspend: pid];
             [suspended setObject:[NSNumber numberWithUnsignedInt: pid] forKey:name];
-        } 
+        } else if ([suspended objectForKey:name]) {
+            NSLog(@"Will resume app %@ (%u)", name, pid);
+            [self resume: pid];
+            [suspended removeObjectForKey: name];
+        }
 
     }
     [tableRunning reloadData];

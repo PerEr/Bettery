@@ -19,12 +19,6 @@
     if ((self = [super init])) {
         suspendables = [[NSMutableDictionary alloc] init];
         suspended = [[NSMutableDictionary alloc] init];
-
-        [suspendables setObject: [NSArray arrayWithObjects: @"PluginProcess", @"WebProcess", nil] forKey: @"Safari"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"Spotify"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"TextWrangler"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"IntelliJ IDEA"];
-        [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: @"AppCode"];
     }
     
     return self;
@@ -94,7 +88,7 @@
 }
 
 - (int) numberOfRowsInTableView:( NSTableView*) tableView {
-    return (int) ((tableView == tableRunning) ? [apps count] : 0);
+    return (int) ((tableView == tableRunning) ? [apps count] : [suspendables count]);
 }
 
 - (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn
@@ -107,8 +101,15 @@
         //NSInteger* pid = (NSInteger*) [procInfo objectForKey: @"NSApplicationProcessIdentifier"];
 
         return name;
+    } else {
+        int count = 0;
+        for (NSString* key in [suspendables keyEnumerator]) {
+            if (count == row)
+                return key;
+            ++count;
+        }
+        return @"?";  // Should never happen
     }
-    return @"";
 }
 
 
@@ -181,7 +182,18 @@
 }
 
 
-- (void) onSelectedRow: (id) obj {
+- (void) onSelectedRow: (NSTableView*) obj {
+    NSInteger row = [obj selectedRow];
+    
+    NSDictionary* procInfo = [apps objectAtIndex: row];
+    
+    NSString* name = [procInfo objectForKey: @"NSApplicationName"];
+    NSLog(@"Selected %@", name);
+    
+    [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: name];
+    
+    [tableManaged reloadData];
+
 }
 
 

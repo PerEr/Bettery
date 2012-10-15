@@ -58,7 +58,10 @@
                name:NSApplicationWillTerminateNotification object:nil];
     
     [tableRunning setTarget:self];
-    [tableRunning setDoubleAction:@selector(onSelectedRow:)];
+    [tableRunning setDoubleAction:@selector(onSelectedToSuspendRow:)];
+
+    [tableManaged setTarget:self];
+    [tableManaged setDoubleAction:@selector(onSelectedToReleaseRow:)];
 }
 
 - (void) suspend: (pid_t) pid {
@@ -182,19 +185,33 @@
 }
 
 
-- (void) onSelectedRow: (NSTableView*) obj {
-    NSInteger row = [obj selectedRow];
+- (void) onSelectedToSuspendRow: (NSTableView*) tableView {
+    NSInteger row = [tableView selectedRow];
     
     NSDictionary* procInfo = [apps objectAtIndex: row];
-    
+        
     NSString* name = [procInfo objectForKey: @"NSApplicationName"];
     NSLog(@"Selected %@", name);
     
     [suspendables setObject: [NSArray arrayWithObjects: nil] forKey: name];
     
     [tableManaged reloadData];
-
 }
+
+- (void) onSelectedToReleaseRow: (NSTableView*) tableView {
+    NSInteger row = [tableView selectedRow];
+    
+    int count = 0;
+    for (NSString* key in [suspendables keyEnumerator]) {
+        if (count == row) {
+            [suspendables removeObjectForKey: key];
+            break;
+        }
+        ++count;
+    }
+    [tableManaged reloadData];    
+}
+
 
 
 

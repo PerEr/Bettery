@@ -110,17 +110,16 @@ static int GetBSDProcessList(kinfo_proc **procList, size_t *procCount)
 
 + (NSArray *)getBSDProcessList {
     NSMutableArray *ret = [NSMutableArray arrayWithCapacity:1];
-    kinfo_proc *mylist = (kinfo_proc *) malloc(sizeof(kinfo_proc));
-    mylist = 0;
+    kinfo_proc *mylist = 0;
     size_t mycount = 0;
 
     GetBSDProcessList(&mylist, &mycount);
-    int k;
-    for (k = 0; k < mycount; k++) {
+    for (int k = 0; k < mycount; k++) {
         kinfo_proc *proc = NULL;
         proc = &mylist[k];
         NSString *fullName = [[self infoForPID:proc->kp_proc.p_pid] objectForKey:(id) kCFBundleNameKey];
-        if (fullName == nil) fullName = [NSString stringWithFormat:@"%s", proc->kp_proc.p_comm];
+        if (fullName == nil)
+            fullName = [NSString stringWithFormat:@"%s", proc->kp_proc.p_comm];
         [ret addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                 fullName, @"pname",
                 [NSString stringWithFormat:@"%d", proc->kp_proc.p_pid], @"pid",

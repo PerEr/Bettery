@@ -30,6 +30,15 @@
     return self;
 }
 
+
+-(void) dealloc {
+    
+    [suspendables release];
+    [suspended release];
+    
+    [super dealloc];
+}
+
 -(void) awakeFromNib {
 
     [self onProcessListChanged: nil];
@@ -69,8 +78,12 @@
 
 - (void) onApplicationQuit: (NSNotification *) note {
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+    NSNotificationCenter* ns = [[NSWorkspace sharedWorkspace] notificationCenter];
+    [ns removeObserver: self];
+    
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver: self];
+    
     NSLog(@"Resuming suspended apps:");
     for (NSString *s in [suspended allKeys]) {
         NSNumber* pid = [suspended objectForKey: s];
@@ -84,7 +97,8 @@
     return (int) ((tableView == tableRunning) ? [apps count] : 0);
 }
 
-- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn row:(int)row {
+- (id)tableView:(NSTableView*)tableView objectValueForTableColumn:(NSTableColumn*) tableColumn
+            row:(int)row {
     
     if (tableView == tableRunning) {
         NSDictionary* procInfo = [apps objectAtIndex: row];
@@ -168,7 +182,6 @@
 
 
 - (void) onSelectedRow: (id) obj {
-    NSLog(@"hej");
 }
 
 

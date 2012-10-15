@@ -127,7 +127,7 @@
         NSLog(@"Will resume app %@ (%d)", name, pid);
         [self resume: pid];
         [suspended removeObjectForKey: name];
-        NSLog(@"Suspended apps = %lu", [suspended count]);
+        NSLog(@"Suspended apps = %ld", [suspended count]);
     }
 }
 
